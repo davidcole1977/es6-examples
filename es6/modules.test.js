@@ -20,7 +20,7 @@ describe('modules', () => {
 			expect(defaultObject.foo).to.equal('bar');
 		});
 
-		it('exports a nameSpaceObject', () => {
+		it('imports as a nameSpaceObject', () => {
 			expect(nameSpaceObject.anotherFunctionName()).to.equal('foo');
 			expect(nameSpaceObject.aSimpleVariable).to.equal('a simple string value');
 			expect(nameSpaceObject.default.foo).to.equal('bar');
