@@ -4,7 +4,7 @@
   "description": "An area to explore new ES6 features, through self contained examples and katas",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha ./es6/*.test.js --compilers js:babel-core/register --recursive",
+    "test": "./node_modules/mocha/bin/mocha ./es6/*.test.js --compilers js:babel-register --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -13,18 +13,16 @@
   },
   "author": "David Cole",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/davidcole1977/es6-examples/issues"
-  },
   "homepage": "https://github.com/davidcole1977/es6-examples#readme",
   "devDependencies": {
-    "babel-cli": "^6.5.1",
-    "babel-core": "^6.5.2",
     "babel-preset-es2015": "^6.5.0",
+    "babel-register": "^6.5.2",
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   }
 }
