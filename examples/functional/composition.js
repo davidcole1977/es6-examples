@@ -8,8 +8,4 @@ export function compose() {
 			return func(newValue);
 		}, originalValue);
 	}
-
-	return function(originalValue) {
-		return originalValue;
-	}
 }
