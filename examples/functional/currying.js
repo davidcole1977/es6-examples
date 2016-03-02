@@ -1,3 +1,5 @@
+import * as helpers from './helpers';
+
 export function assembleGreeting(salutation) {
 	return function(name) {
 		return function(greeting) {
@@ -6,15 +8,11 @@ export function assembleGreeting(salutation) {
 	}
 }
 
-function argsToArray(args) {
-	return Array.prototype.slice.call(args);
-}
-
 export function curry(originalFunction) {
-	const predefinedArgs = argsToArray(arguments).slice(1);
+	const predefinedArgs = helpers.argsToArray(arguments).slice(1);
 
 	return function() {
-		const args = predefinedArgs.concat(argsToArray(arguments));
+		const args = predefinedArgs.concat(helpers.argsToArray(arguments));
 
 		return originalFunction.apply(null, args);
 	}
