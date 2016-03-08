@@ -17,7 +17,7 @@ const operations = {
 	}
 };
 
-function addOperation(operation, startValue) {
+function makeOperation(operation, startValue) {
 	return function(value) {
 		return getOperations(operation(startValue, value));
 	}
@@ -25,11 +25,11 @@ function addOperation(operation, startValue) {
 
 const getOperations = function(startValue) {
 	return {
-		add: addOperation(operations.add, startValue),
-		subtract: addOperation(operations.subtract, startValue),
-		divideBy: addOperation(operations.divideBy, startValue),
-		multiplyBy: addOperation(operations.multiplyBy, startValue),
-		raiseToThePowerOf: addOperation(operations.raiseToThePowerOf, startValue),
+		add: makeOperation(operations.add, startValue),
+		subtract: makeOperation(operations.subtract, startValue),
+		divideBy: makeOperation(operations.divideBy, startValue),
+		multiplyBy: makeOperation(operations.multiplyBy, startValue),
+		raiseToThePowerOf: makeOperation(operations.raiseToThePowerOf, startValue),
 		result: startValue
 	}
 }
