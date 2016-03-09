@@ -3,7 +3,7 @@ import {simpleTplString, tplStringWithExpression, tplStringWithBackticks, tplStr
 
 const expect = chai.expect;
 
-describe('es6', () => {
+describe('ES6', () => {
 	describe('template strings', () => {
 		describe('simple template strings', () => {
 			it('makes a template string with simple variable substitution', () => {

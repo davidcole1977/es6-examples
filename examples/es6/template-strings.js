@@ -8,18 +8,25 @@ function makeUpperCase(value) {
 	return value.toUpperCase()
 }
 
-function mixStringArrays(arrayA, arrayB) {
-	return arrayA.map((value, index) => {
-		let bValue = (arrayB[index]) ? arrayB[index] : '';
-		return value.concat(bValue);
+function spliceArrays(arrayA, arrayB) {
+	let splicedArray = [];
+
+	arrayA.forEach((value, index) => {
+		splicedArray.push(value);
+
+		if (arrayB[index]) {
+			splicedArray.push(arrayB[index]);
+		}
 	});
+
+	return splicedArray;
 }
 
 function transformUpperCase (tplFragments, ...values) {
 	const upperTplFragments = tplFragments.map(makeUpperCase);
 	const upperValues = values.map(makeUpperCase);
 
-	return mixStringArrays(upperTplFragments, upperValues).join('');
+	return spliceArrays(upperTplFragments, upperValues).join('');
 };
 
 export const simpleTplString = `foo ${bar}`;
