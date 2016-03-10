@@ -3,7 +3,7 @@ import {take} from './fluent-calculator';
 
 const expect = chai.expect;
 
-describe('fluent API', () => {
+describe('functional', () => {
 	describe('fluent calculator', () => {
 		it('adds several values', () => {
 			const result = take(10).add(5).add(3).add(20).result;

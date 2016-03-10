@@ -8,12 +8,6 @@ export function assembleGreeting(salutation) {
 	}
 }
 
-export function curry(originalFunction) {
-	const predefinedArgs = helpers.argsToArray(arguments).slice(1);
-
-	return function() {
-		const args = predefinedArgs.concat(helpers.argsToArray(arguments));
-
-		return originalFunction.apply(null, args);
-	}
+export function curry(originalFunction, ...originalArgs) {
+	return (...args) => originalFunction.apply(null, originalArgs.concat(args));
 }
