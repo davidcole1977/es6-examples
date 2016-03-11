@@ -8,6 +8,16 @@ export function assembleGreeting(salutation) {
 	}
 }
 
-export function curry(originalFunction, ...originalArgs) {
-	return (...args) => originalFunction.apply(null, originalArgs.concat(args));
+export function makePartial(originalFunction, ...originalArgs) {
+	return (...args) => originalFunction(...originalArgs, ...args);
+}
+
+export function curry(func, remainingArgs = func.length) {
+	return function (...args) {
+		if (args.length >= remainingArgs) {
+			return func(...args);
+		}
+
+		return curry(makePartial(func, ...args), remainingArgs - args.length);
+	};
 }
