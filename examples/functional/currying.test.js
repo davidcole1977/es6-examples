@@ -9,7 +9,7 @@ describe('functional', () => {
 			return salutation + ' ' + name + ', ' + greeting;
 		}
 
-		describe('crude partial application example', () => {
+		describe('crude currying & partial application example', () => {
 			it('assembles a greeting function from three partial functions', () => {
 				const greetHello = assembleGreeting('Hello');
 				const greetHelloDavid = greetHello('David');

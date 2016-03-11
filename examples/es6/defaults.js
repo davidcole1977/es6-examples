@@ -15,7 +15,3 @@ export function makeListSentenceFragment(items, separator = ', ', finalSeparator
 	
 	return initialFragment.concat(finalFragment);
 }
-
-export function tellMeWhatAnimalsILike(sentenceStart, ...animals) {
-	return `${sentenceStart} ${makeListSentenceFragment(animals)}.`;
-};

@@ -17,7 +17,7 @@ export function curry(func, remainingArgs = func.length) {
 		if (args.length >= remainingArgs) {
 			return func(...args);
 		}
-
+		
 		return curry(makePartial(func, ...args), remainingArgs - args.length);
 	};
 }
