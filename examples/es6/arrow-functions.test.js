@@ -4,7 +4,7 @@ import {increment, sum, getFoo, getBar} from './arrow-functions';
 const expect = chai.expect;
 
 describe('ES6', () => {
-	describe.only('arrow functions', () => {
+	describe('arrow functions', () => {
 		describe('takes a single argument and has a one line return statement', () => {
 			it('does not need parentheses, curly brackets or a return statement', () => {
 				expect(increment(11)).to.equal(12);
