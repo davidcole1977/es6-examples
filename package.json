@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha ./examples/**/*.test.js --compilers js:babel-register --recursive",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "lint": "./node_modules/jshint/bin/jshint ./examples/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "babel-preset-es2015": "^6.5.0",
     "babel-register": "^6.5.2",
     "chai": "^3.5.0",
+    "jshint": "^2.9.1",
     "mocha": "^2.4.5",
     "ramda": "^0.19.1"
   },
