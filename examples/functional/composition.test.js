@@ -17,12 +17,6 @@ describe('functional', () => {
 			return input - value;
 		}
 
-		describe('Basic functional arithmetic calculator', () => {
-			it('returns the value of a simple calculation involving addition, subtraction and multiplication', () => {
-				expect(multiply(5, subtract(1, add(3, 2)))).to.equal(20);
-			});
-		});
-
 		describe('compose helper function', () => {
 			it('composes simple arithmetic result', () => {
 				const add3 = add.bind(null, 3);

@@ -1,6 +1,5 @@
 import chai from 'chai';
-import {foo} from './symbols';
-import {bar} from './symbols';
+import {foo, bar} from './symbols';
 
 const expect = chai.expect;
 

@@ -1,5 +1,3 @@
-import * as helpers from './helpers';
-
 export function assembleGreeting(salutation) {
 	return function(name) {
 		return function(greeting) {

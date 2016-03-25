@@ -1,8 +1,4 @@
-import * as helpers from './helpers';
-
-function calculate(startingValue) {
-	const funcs = helpers.argsToArray(arguments).slice(1);
-
+function calculate(startingValue, ...funcs) {
 	return funcs.reduce((newValue, func, funcsArray) => {
 		return func(newValue);
 	}, startingValue);
