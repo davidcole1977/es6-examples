@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha ./examples/**/*.test.js --compilers js:babel-register --recursive",
     "test:watch": "npm run test -- --watch",
-    "lint": "./node_modules/jshint/bin/jshint ./examples/**/*.js"
+    "lint": "eslint ./src/*.js ./examples/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -16,12 +16,13 @@
   "license": "ISC",
   "homepage": "https://github.com/davidcole1977/es6-examples#readme",
   "devDependencies": {
+    "babel-eslint": "~6.0.2",
+    "eslint": "~2.7.0",
     "accounting": "^0.4.1",
     "babel-polyfill": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-register": "^6.5.2",
     "chai": "^3.5.0",
-    "jshint": "^2.9.1",
     "mocha": "^2.4.5",
     "ramda": "^0.19.1",
     "sinon": "^1.17.3",
