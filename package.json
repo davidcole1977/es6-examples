@@ -38,5 +38,8 @@
     "presets": [
       "es2015"
     ]
+  },
+  "dependencies": {
+    "rx": "^4.1.0"
   }
 }

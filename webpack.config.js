@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
     'rx-voter': './examples/rxjs/rx-voter.js',
+    'rx-hello-world': './examples/rxjs/rx-hello-world.js'
   },
   output: {
     filename: './examples/rxjs/[name].compiled.js'
