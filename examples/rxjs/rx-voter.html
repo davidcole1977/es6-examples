@@ -3,11 +3,43 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>RX Voter Example</title>
+        <title>RX Voting Example</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <p>RX Voter Example</p>
+        <h1>What's your favourite fruit</h1>
+
+        <h2>Voter 1</h2>
+        <label for="voter1-bananas">bananas</label>
+        <input type="radio" id="voter1-bananas" name="voter1" value="bananas" />
+        <label for="voter1-strawberries">strawberries</label>
+        <input type="radio" id="voter1-strawberries" name="voter1" value="strawberries" />
+        <label for="voter1-mango">mango</label>
+        <input type="radio" id="voter1-mango" name="voter1" value="mango" />
+
+        <h2>Voter 2</h2>
+        <label for="voter-bananas">bananas</label>
+        <input type="radio" id="voter-bananas" name="voter2" value="bananas" />
+        <label for="voter-strawberries">strawberries</label>
+        <input type="radio" id="voter-strawberries" name="voter2" value="strawberries" />
+        <label for="voter-mango">mango</label>
+        <input type="radio" id="voter-mango" name="voter2" value="mango" />
+
+        <h2>Voter 3</h2>
+        <label for="voter3-bananas">bananas</label>
+        <input type="radio" id="voter3-bananas" name="voter3" value="bananas" />
+        <label for="voter3-strawberries">strawberries</label>
+        <input type="radio" id="voter3-strawberries" name="voter3" value="strawberries" />
+        <label for="voter3-mango">mango</label>
+        <input type="radio" id="voter3-mango" name="voter3" value="mango" />
+
+        <h2>Results (TBC)</h2>
+        <ul>
+            <li>bananas: <span data-role="results-bananas"></span></li>
+            <li>strawberries: <span data-role="results-strawberries"></span></li>
+            <li>mango: <span data-role="results-mango"></span></li>
+        </ul>
+
         <script src="/rx-voter.compiled.js"></script>
     </body>
 </html>

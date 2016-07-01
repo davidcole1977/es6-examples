@@ -32,7 +32,8 @@
     "ramda": "^0.19.1",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
-    "webpack": "^1.12.15"
+    "webpack": "^1.12.15",
+    "rx": "^4.1.0"
   },
   "babel": {
     "presets": [
@@ -40,6 +41,6 @@
     ]
   },
   "dependencies": {
-    "rx": "^4.1.0"
+    "lodash": "^4.13.1"
   }
 }
