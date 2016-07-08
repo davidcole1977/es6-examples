@@ -1,5 +1,6 @@
 module.exports = {
   entry: {
+    'rx-async-lookahead': './examples/rxjs/rx-async-lookahead.js',
     'rx-voter': './examples/rxjs/rx-voter.js',
     'rx-counter': './examples/rxjs/rx-counter.js',
     'rx-hello-world': './examples/rxjs/rx-hello-world.js'
