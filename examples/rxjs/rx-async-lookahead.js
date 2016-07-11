@@ -1,9 +1,24 @@
 import Rx from 'rx';
 
-function requestAnimalNames(animalInput) {
+const animalInputElement = document.querySelector('[data-role="animal-input"]');
+const animalListElement = document.querySelector('[data-role="animal-shortlist"]');
+
+const getInputValue = (event) => event.target.value;
+
+const createShortlistElement = (animalName) => `<p>${animalName}</p>`;
+
+const parseLookaheadMatches = (response) => response.lookaheadMatches || [];
+
+function requestLookAheadMatches(value) {
+	if(value.length < 1) {
+		return Promise.resolve({
+			query: ''
+		}); 
+	}
+
 	const request = new XMLHttpRequest();
 
-	request.open('GET', `/requestAnimalNames/${animalInput}`, true);
+	request.open('GET', `/requestAnimalNames/${value}`, true);
 	request.send();
 
 	return new Promise((resolve, reject) => {
@@ -13,24 +28,32 @@ function requestAnimalNames(animalInput) {
 	});
 }
 
-function getInputValue(event) {
-	return event.target.value;
+function renderLookaheadMatches(lookaheadMatches) {
+	let htmlString;
+
+	if (lookaheadMatches.length > 0) {
+		htmlString = lookaheadMatches.map(createShortlistElement).join('');
+	} else {
+		htmlString = '<p>No matches found</p>';
+	}
+
+	animalListElement.innerHTML = htmlString;
 }
 
-const animalInputElement = document.querySelectorAll('[data-role="animal-input"]');
+function renderWaitingMessage(value) {
+	animalListElement.innerHTML = '<p>Fetching responses</p>';
 
-const animalInputStream = Rx.Observable
+	return value;
+}
+
+const lookaheadInputStream = Rx.Observable
 	.fromEvent(animalInputElement, 'keyup')
-	.debounce(500)
 	.map(getInputValue)
-	.map(logResponse)
-	.flatMap((animalName) => Rx.Observable.fromPromise(requestAnimalNames(animalName)))
-	.map(logResponse);
+	.distinctUntilChanged()
+	.map(renderWaitingMessage)
+	.debounce(500)
+	.flatMap((animalName) => Rx.Observable.fromPromise(requestLookAheadMatches(animalName)))
+	.map(parseLookaheadMatches)
+	.startWith([]);
 
-function logResponse(response) {
-	console.log(response);
-
-	return response;
-}
-
-animalInputStream.subscribe(requestAnimalNames);
+lookaheadInputStream.subscribe(renderLookaheadMatches);

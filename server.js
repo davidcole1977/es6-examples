@@ -1,7 +1,9 @@
-const express = require('express'),
-	expressApp = express(),
-	chalk = require('chalk'),
-	bodyParser = require('body-parser');
+const express = require('express');
+const expressApp = express();
+const chalk = require('chalk');
+const bodyParser = require('body-parser');
+
+const lookaheadExample = require('./server-lookahead-example');
 
 // allows us to receive requests using JSON or URL encoded data
 expressApp.use(bodyParser.json());
@@ -10,8 +12,14 @@ expressApp.use(bodyParser.urlencoded({
 }));
 
 expressApp.get('/requestAnimalNames/:animalName', function (request, response) {
-	console.log(request.params);
-	response.send({requestedName: request.params.animalName});
+	const repsonseObject = {
+		query: request.params.animalName,
+		lookaheadMatches: lookaheadExample.lookahead(request.params.animalName)
+	};
+	
+	console.log(repsonseObject);
+
+	response.send(repsonseObject);
 });
 
 // serve static files
