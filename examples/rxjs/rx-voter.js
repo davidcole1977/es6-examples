@@ -1,5 +1,4 @@
 import Rx from 'rx';
-import _ from 'lodash';
 
 const voterSourceElems = [
 	document.querySelectorAll('[name="voter1"]'),
@@ -8,18 +7,21 @@ const voterSourceElems = [
 ];
 
 const getEventTargetValue = (event) => event.target.value;
-const notNull = (value) => value !== null;
 
-function getUniqueValuesCountsAsObj(array) {
-	const emptyUniquesObj = {};
-	_.uniq(array).forEach((value) => emptyUniquesObj[value] = 0);
+function mapUniqueStringCountsAsObj(array) {
+	return array.reduce((valueCountsObj, value) => {
+		const key = String(value);
+		const newValueCountsObj = Object.assign({}, valueCountsObj);
 
-	return array.reduce((countsObj, value) => {
-		const cloneCountObj = Object.assign({}, countsObj);
-		cloneCountObj[value] += 1;
+		if (!key) {
+			return valueCountsObj;
+		}
 
-		return cloneCountObj;
-	}, emptyUniquesObj);
+		const keyCount = valueCountsObj.hasOwnProperty(key) ? valueCountsObj[key] : 0;
+
+		newValueCountsObj[key] = keyCount + 1;
+		return newValueCountsObj;
+	}, {});
 }
 
 function renderResults(results) {
@@ -37,15 +39,9 @@ function createVoterStream(inputElem) {
 
 const voterSourceStreams = voterSourceElems.map((inputElem) => createVoterStream(inputElem));
 
-const combinedVotes = Rx.Observable
-	.merge(...voterSourceStreams);
-
-const votingStream = combinedVotes
-	.map(() => null)
-	.withLatestFrom(
-		...voterSourceStreams,
-		(...values) => values.filter(notNull)
-	)
-	.map(getUniqueValuesCountsAsObj);
+const votingStream = Rx.Observable
+	.combineLatest(voterSourceStreams)
+	.map(mapUniqueStringCountsAsObj)
+	.startWith({});
 
 votingStream.subscribe(renderResults);
